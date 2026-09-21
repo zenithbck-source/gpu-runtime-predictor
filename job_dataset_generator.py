@@ -24,6 +24,6 @@ def mapping_data(dataset):
 
 
 if __name__ == '__main__':
-    fresh_data = generate_training_data(2)
+    fresh_data = generate_training_data(10000)
     final_data = mapping_data(fresh_data)
-    print(final_data)
+    final_data.to_csv('training_data.csv')
