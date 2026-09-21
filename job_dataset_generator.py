@@ -13,6 +13,17 @@ def generate_training_data(n, seed=42):
 
     return data
 
+def mapping_data(dataset):
+    queue_mapping = {'short': 0, 'normal' : 1, 'long':2}
+    dataset = pd.DataFrame(dataset)
+    dataset['queue_type'] = dataset['queue_type'].map(queue_mapping)
+
+    dataset['actual_runtime'] = dataset['ncpus'] * 2 + dataset['mem_gb'] * 1.5 + (dataset['queue_type'] * 20) + 15
+
+    return dataset
+
+
 if __name__ == '__main__':
-    data = generate_training_data(2)
-    print(data)
+    fresh_data = generate_training_data(2)
+    final_data = mapping_data(fresh_data)
+    print(final_data)
