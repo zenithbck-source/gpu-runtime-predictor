@@ -1,8 +1,10 @@
 import pandas as pd
 import random
 
-def generate_training_data(n, seed=42):
+def generate_training_data(n, seed):
+    random.seed(seed)
     data = []
+
 
     for i in range(0, n):
         ncpus = random.choice([1,2,4,8,16])
@@ -24,6 +26,10 @@ def mapping_data(dataset):
 
 
 if __name__ == '__main__':
-    fresh_data = generate_training_data(1000)
+    fresh_data = generate_training_data(1000, 42)
     final_data = mapping_data(fresh_data)
     final_data.to_csv('training_data.csv')
+
+    testing_data = generate_training_data(1000, 7)
+    final_testing_data = mapping_data(testing_data)
+    final_testing_data.to_csv('testing_data.csv')
