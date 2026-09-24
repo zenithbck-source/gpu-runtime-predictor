@@ -18,11 +18,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 # --- Step 3: Device selection ---
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
-print()
-print(X_test)
-print()
-print(y_test)
-""" # --- Step 4: Convert to tensors, move to device ---
+
+# --- Step 4: Convert to tensors, move to device ---
 X_train = torch.tensor(X_train, dtype=torch.float32).to(device)
 y_train = torch.tensor(y_train, dtype=torch.float32).view(-1, 1).to(device)
 X_test = torch.tensor(X_test, dtype=torch.float32).to(device)
@@ -81,4 +78,4 @@ with torch.no_grad():
 
 # --- Step 10: Save the trained model ---
 torch.save(model.state_dict(), "runtime_model.pth")
-print("Model saved to runtime_model.pth") """
+print("Model saved to runtime_model.pth")
